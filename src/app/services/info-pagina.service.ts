@@ -23,7 +23,7 @@ export class InfoPaginaService {
             this.cargada = true;
             this.info = resp;
             // console.log(resp['twitter']);
-            console.log(resp);
+            // console.log(resp);
         });
   }
 
@@ -31,7 +31,7 @@ export class InfoPaginaService {
     this.http.get('https://angular-html-c0331.firebaseio.com/equipo.json')
         .subscribe( (resp: InfoEquipo[]) => {
             this.equipo = resp;
-            console.log(resp);
+            // console.log(resp);
          });
   }
 }
