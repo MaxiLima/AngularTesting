@@ -10,3 +10,10 @@ export interface InfoPagina {
     tumblr?: string;
     equipo_trabajo?: any[];
 }
+
+export interface InfoEquipo {
+    frase?: string;
+    insta?: string;
+    nombre?: string;
+    subtitulo?: string;
+}

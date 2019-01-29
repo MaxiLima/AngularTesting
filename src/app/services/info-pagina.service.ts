@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { InfoPagina } from '../interfaces/info-pagina.interfaces';
+import { InfoPagina, InfoEquipo } from '../interfaces/info-pagina.interfaces';
 
 
 @Injectable({
@@ -9,12 +9,15 @@ import { InfoPagina } from '../interfaces/info-pagina.interfaces';
 export class InfoPaginaService {
 
   info: InfoPagina = {};
+  equipo: InfoEquipo[] = [];
   cargada = false;
   constructor(private http: HttpClient) {
 
-    // console.log('servicio de pagina listo');
+    this.cargarInfo();
+    this.cargarEquipo();
+  }
 
-    // Leer archivo JSON
+  private cargarInfo() {
     this.http.get('assets/data/data-pagina.json')
         .subscribe( (resp: InfoPagina) => {
             this.cargada = true;
@@ -22,5 +25,13 @@ export class InfoPaginaService {
             // console.log(resp['twitter']);
             console.log(resp);
         });
+  }
+
+  private cargarEquipo() {
+    this.http.get('https://angular-html-c0331.firebaseio.com/equipo.json')
+        .subscribe( (resp: InfoEquipo[]) => {
+            this.equipo = resp;
+            console.log(resp);
+         });
   }
 }
